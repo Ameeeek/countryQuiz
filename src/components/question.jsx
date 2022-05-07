@@ -32,7 +32,7 @@ function Question() {
                                     if(vlueBaru == answer){
                                         jsConfetti.addConfetti()
                                     } else{
-                                        console.log('lemao')
+                                        console.log('salah coek')
                                     }
                                 }}
                                 id="tanya"
