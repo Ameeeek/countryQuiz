@@ -1,26 +1,48 @@
 import { newQuestion } from "country-quiz";
-import { useEffect, useState } from "react";
-import JSConfetti from 'js-confetti'
+import { useEffect, useState, useRef } from "react";
+import JSConfetti from "js-confetti";
 function Question() {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [option, setOption] = useState([]);
-    const jsConfetti = new JSConfetti()
-    const [result, setResult] = useState(false);
+    const [request, setRequest] = useState(false);
+    const jsConfetti = new JSConfetti();
     const quiz = newQuestion("capital-to-country", 3);
+    const list = [
+        {
+            ...quiz,
+        },
+    ];
+
     useEffect(() => {
-        console.log(quiz);
+        if (setRequest) {
+            setQuestion(quiz.question);
+            setAnswer(quiz.answer);
+            setOption(quiz.options);
+            setRequest(false);
+        }
         setQuestion(quiz.question);
         setAnswer(quiz.answer);
         setOption(quiz.options);
-    }, []);
-
+    }, [request]);
+    function change() {
+        console.log(list);
+        buttonEl.current.fontSize = "12rem";
+    }
     return (
-        <div className=" flex  flex-col text-center item-center justify-center">
+        <div className=" flex  flex-col text-center item-center  justify-center">
             <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
-                <p className="z-20 p-2 text-4xl text-left biru uppercase">
-                    {question} is the capital of
-                </p>
+                <div className="z-20 p-2 text-4xl flex justify-between text-left  uppercase">
+                    <p className="biru">{question} is the capital of</p>
+                    <button
+                        onClick={() => {
+                            setRequest(true);
+                        }}
+                        className="bg-orange-300 hover:text-black text-white popBold p-4 rounded-md"
+                    >
+                        Next
+                    </button>
+                </div>
                 {option.map((options) => {
                     return (
                         <div className="z-10 ">
@@ -29,10 +51,10 @@ function Question() {
                                 onClick={(e) => {
                                     let vlueBaru = e.target.value;
                                     console.log(vlueBaru);
-                                    if(vlueBaru == answer){
-                                        jsConfetti.addConfetti()
-                                    } else{
-                                        console.log('salah coek')
+                                    if (vlueBaru == answer) {
+                                        jsConfetti.addConfetti();
+                                    } else {
+                                        console.log("salah coek");
                                     }
                                 }}
                                 id="tanya"
