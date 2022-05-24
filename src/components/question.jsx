@@ -1,6 +1,7 @@
 import { newQuestion } from "country-quiz";
 import { useEffect, useState, useRef } from "react";
 import JSConfetti from "js-confetti";
+import swal from 'sweetalert'
 function Question() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -53,8 +54,17 @@ function Question() {
                   console.log(vlueBaru);
                   if (vlueBaru == answer) {
                     jsConfetti.addConfetti();
+                    swal({
+                      title:"benar",
+                      text:"jawaban mu benar!!",
+                      icon:"success"
+                    })
                   } else {
-                    alert("boooo!!!")
+                    swal({
+                      title:"salah kocak",
+                      text:"coba lagi!!",
+                      icon:"error"
+                    })
                   }
                 }}
                 id="tanya"
