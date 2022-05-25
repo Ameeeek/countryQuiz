@@ -9,13 +9,8 @@ function Question() {
   const [request, setRequest] = useState(false);
   const jsConfetti = new JSConfetti();
   const quiz = newQuestion("capital-to-country", 3);
-  const [count, setCount] = useState(0)
-  const list = [
-    {
-      ...quiz,
-    },
-  ];
-  console.log(count)
+  const [count, setCount] = useState(0);
+  console.log(count);
   useEffect(() => {
     if (setRequest) {
       setQuestion(quiz.question);
@@ -27,10 +22,7 @@ function Question() {
     setAnswer(quiz.answer);
     setOption(quiz.options);
   }, [request]);
-  function change() {
-    console.log(list);
-    buttonEl.current.fontSize = "12rem";
-  }
+  
   return (
     <div className=" flex  flex-col text-center item-center  justify-center">
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
@@ -47,11 +39,7 @@ function Question() {
                   console.log(vlueBaru);
                   if (vlueBaru == answer) {
                     setRequest(true);
-                    setCount(count + 1)
-                    console.log(count)
-                    if(count == 5){
-                      console.log("selesai!!")
-                    }
+                   
                     jsConfetti.addConfetti();
                     swal({
                       title: "benar",
@@ -60,16 +48,17 @@ function Question() {
                     });
                   } else {
                     setRequest(true);
-                    setCount(count + 1)
-                    console.log(count)
-                    if(count === 5){
-                      console.log("selesai!!")
-                    }
+                    
                     swal({
                       title: "salah kocak",
                       text: "coba lagi!!",
                       icon: "error",
                     });
+                    setCount(count + 1)
+                    if(count == 5){
+                      swal('selesai!!')
+                      jsConfetti.addConfetti()
+                    }
                   }
                 }}
                 id="tanya"
