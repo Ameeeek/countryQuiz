@@ -39,7 +39,7 @@ function Question() {
         </div>
         {option.map((options) => {
           return (
-            <div className="xl:z-10 sm:z-1 ">
+            <div className="xl:z-10  sm:z-1 ">
               <button
                 value={options}
                 onClick={(e) => {
@@ -73,7 +73,7 @@ function Question() {
                   }
                 }}
                 id="tanya"
-                className="xl:text-2xl xl:py-12 sm:text-lg sm:py-4 sm:w-8/12 xl:w-full xl:h-auto tanya rounded-xl hover:bg-orange-300"
+                className="xl:text-2xl xl:py-12 py-4 sm:text-base text-lg w-full sm:py-4 sm:w-8/12 xl:w-full xl:h-auto tanya rounded-xl hover:bg-orange-300"
               >
                 {options}
               </button>
