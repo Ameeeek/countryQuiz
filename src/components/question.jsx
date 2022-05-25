@@ -1,7 +1,7 @@
 import { newQuestion } from "country-quiz";
 import { useEffect, useState, useRef } from "react";
 import JSConfetti from "js-confetti";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 function Question() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -35,12 +35,7 @@ function Question() {
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
         <div className="z-20 sm:text-lg p-2 text-4xl flex justify-between text-left  uppercase">
           <p className="biru ">{question} is the capital of</p>
-          <button
-            onClick={() => {
-              setRequest(true);
-            }}
-            className="bg-orange-300 sm:p-2 sm:text-base     hover:text-black text-white popBold p-4 rounded-md"
-          >
+          <button className="bg-orange-300 sm:p-2 sm:text-base     hover:text-black text-white popBold p-4 rounded-md">
             Next
           </button>
         </div>
@@ -53,18 +48,20 @@ function Question() {
                   let vlueBaru = e.target.value;
                   console.log(vlueBaru);
                   if (vlueBaru == answer) {
+                    setRequest(true);
                     jsConfetti.addConfetti();
                     swal({
-                      title:"benar",
-                      text:"jawaban mu benar!!",
-                      icon:"success"
-                    })
+                      title: "benar",
+                      text: "jawaban mu benar!!",
+                      icon: "success",
+                    });
                   } else {
+                    setRequest(true);
                     swal({
-                      title:"salah kocak",
-                      text:"coba lagi!!",
-                      icon:"error"
-                    })
+                      title: "salah kocak",
+                      text: "coba lagi!!",
+                      icon: "error",
+                    });
                   }
                 }}
                 id="tanya"
