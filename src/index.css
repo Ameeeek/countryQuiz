@@ -10,6 +10,9 @@
 .biru{
     color:#2F527B;
 }
+.hijau{
+    color: #1D355D;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

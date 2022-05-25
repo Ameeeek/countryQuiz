@@ -11,6 +11,7 @@ function Question() {
   const [is5, setIs5] = useState(false);
   const quiz = newQuestion("capital-to-country", 3);
   const [count, setCount] = useState(0);
+  const [benar, setBenar] = useState(0);
   console.log(count);
   useEffect(() => {
     if (setRequest) {
@@ -28,7 +29,18 @@ function Question() {
     <div className=" flex  flex-col text-center item-center  justify-center">
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
         {is5 ? (
-          <h1>Halo</h1>
+          <>
+            <h1 className="biru text-center pb-4 md:pb-8 md:text-center text-lg md:text-4xl">
+              Results
+            </h1>
+            <div className="flex justify-center justify-items-center  ">
+              <p className="mt-2 mx-2">
+                You got 
+              </p>
+                <p className="text-xl md:text-4xl  popmed  text-green-400">{benar}</p> <p className="mt-2 mx-2">correct answers</p>
+            </div>  
+            
+          </>
         ) : (
           <>
             <div className="xl:z-20 lg:text-lg  sm:text-xs text-xs md:text-2xl  p-2 xl:text-4xl  text-center md:text-center  uppercase">
@@ -47,6 +59,9 @@ function Question() {
                       console.log(vlueBaru);
                       if (vlueBaru == answer) {
                         setRequest(true);
+                        setBenar(benar + 1);
+                        console.log(count);
+                        setCount(count + 1);
                         jsConfetti.addConfetti();
                         vlueBaruu.style.backgroundColor = "green";
                         // swal({
