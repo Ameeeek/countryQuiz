@@ -22,11 +22,11 @@ function Question() {
     setAnswer(quiz.answer);
     setOption(quiz.options);
   }, [request]);
-  
+
   return (
     <div className=" flex  flex-col text-center item-center  justify-center">
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
-        <div className="xl:z-20 lg:text-base sm:text-lg  p-2 xl:text-4xl flex justify-between text-left  uppercase">
+        <div className="xl:z-20 lg:text-base sm:text-lg  p-2 xl:text-4xl  text-center md:text-center  uppercase">
           <p className="biru ">{question} is the capital of</p>
         </div>
         {option.map((options) => {
@@ -36,33 +36,43 @@ function Question() {
                 value={options}
                 onClick={(e) => {
                   let vlueBaru = e.target.value;
+                  let vlueBaruu = e.target;
+                  console.log(vlueBaruu)
+                  let jawab = document.getElementById("tanya");
                   console.log(vlueBaru);
                   if (vlueBaru == answer) {
                     setRequest(true);
-                   
                     jsConfetti.addConfetti();
-                    swal({
-                      title: "benar",
-                      text: "jawaban mu benar!!",
-                      icon: "success",
-                    });
+                    vlueBaruu.style.backgroundColor = "green";
+                    // swal({
+                    //   title: "benar",
+                    //   text: "jawaban mu benar!!",
+                    //   icon: "success",
+                    // });
+                    setTimeout(() => {
+                      vlueBaruu.style.backgroundColor = "white";
+
+                    }, 500);
                   } else {
                     setRequest(true);
-                    
-                    swal({
-                      title: "salah kocak",
-                      text: "coba lagi!!",
-                      icon: "error",
-                    });
-                    setCount(count + 1)
-                    if(count == 5){
-                      swal('selesai!!')
-                      jsConfetti.addConfetti()
+                    vlueBaruu.style.backgroundColor = "red";
+                    // swal({
+                    //   title: "salah kocak",
+                    //   text: "coba lagi!!",
+                    //   icon: "error",
+                    // });
+                    setCount(count + 1);
+                    if (count == 5) {
+                      swal("selesai!!");
+                      jsConfetti.addConfetti();
                     }
+                    setTimeout(() => {
+                      vlueBaruu.style.backgroundColor = "white";
+                    }, 500);
                   }
                 }}
                 id="tanya"
-                className="xl:text-2xl xl:py-12 py-4 sm:text-base text-lg w-full sm:py-4 sm:w-8/12 xl:w-full xl:h-auto tanya rounded-xl hover:bg-orange-300"
+                className="xl:text-2xl  xl:py-6 py-4 md:mt-2 sm:text-base text-lg w-full sm:py-4 sm:w-8/12 xl:w-full xl:h-auto tanya rounded-xl hover:bg-orange-400 border-solid  border-2 border-cyan-600"
               >
                 {options}
               </button>
