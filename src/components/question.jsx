@@ -33,20 +33,20 @@ function Question() {
   return (
     <div className=" flex  flex-col text-center item-center  justify-center">
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
-        <div className="z-20 p-2 text-4xl flex justify-between text-left  uppercase">
-          <p className="biru">{question} is the capital of</p>
+        <div className="z-20 sm:text-lg p-2 text-4xl flex justify-between text-left  uppercase">
+          <p className="biru ">{question} is the capital of</p>
           <button
             onClick={() => {
               setRequest(true);
             }}
-            className="bg-orange-300 hover:text-black text-white popBold p-4 rounded-md"
+            className="bg-orange-300 sm:p-2 sm:text-base     hover:text-black text-white popBold p-4 rounded-md"
           >
             Next
           </button>
         </div>
         {option.map((options) => {
           return (
-            <div className="z-10 ">
+            <div className="z-10 sm:z-1 ">
               <button
                 value={options}
                 onClick={(e) => {
@@ -68,7 +68,7 @@ function Question() {
                   }
                 }}
                 id="tanya"
-                className="text-2xl py-12 w-full h-auto tanya rounded-xl hover:bg-orange-300"
+                className="text-2xl py-12 sm:text-lg sm:py-4 sm:w-8/12 w-full h-auto tanya rounded-xl hover:bg-orange-300"
               >
                 {options}
               </button>

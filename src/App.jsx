@@ -7,11 +7,11 @@ function App() {
         <>
             <img
                 src={bg}
-                className="h-screen w-screen z-0  object-cover absolute"
+                className="h-screen sm:h-screen sm:w-screen w-screen z-0  object-cover absolute"
             />
             <div className="min-h-screen p-12 flex flex-col item-center justify-center">
                 <Header />
-                <Question classname="" />
+                <Question  />
             </div>
         </>
     );
