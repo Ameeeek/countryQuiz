@@ -2,7 +2,6 @@ import Question from "./components/question";
 import bg from "./img/background.png";
 import Header from "./components/header";
 function App() {
-   
     return (
         <>
             <img
@@ -11,7 +10,7 @@ function App() {
             />
             <div className="min-h-screen xl:p-12 2xl:p-12 md:p-10 p-6 lg:p-10 flex flex-col item-center justify-center">
                 <Header />
-                <Question  />
+                <Question/> 
             </div>
         </>
     );
