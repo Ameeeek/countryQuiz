@@ -9,12 +9,13 @@ function Question() {
   const [request, setRequest] = useState(false);
   const jsConfetti = new JSConfetti();
   const quiz = newQuestion("capital-to-country", 3);
+  const [count, setCount] = useState(0)
   const list = [
     {
       ...quiz,
     },
   ];
-
+  console.log(count)
   useEffect(() => {
     if (setRequest) {
       setQuestion(quiz.question);
@@ -33,15 +34,12 @@ function Question() {
   return (
     <div className=" flex  flex-col text-center item-center  justify-center">
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
-        <div className="z-20 sm:text-lg p-2 text-4xl flex justify-between text-left  uppercase">
+        <div className="xl:z-20 lg:text-base sm:text-lg  p-2 xl:text-4xl flex justify-between text-left  uppercase">
           <p className="biru ">{question} is the capital of</p>
-          <button className="bg-orange-300 sm:p-2 sm:text-base     hover:text-black text-white popBold p-4 rounded-md">
-            Next
-          </button>
         </div>
         {option.map((options) => {
           return (
-            <div className="z-10 sm:z-1 ">
+            <div className="xl:z-10 sm:z-1 ">
               <button
                 value={options}
                 onClick={(e) => {
@@ -49,6 +47,11 @@ function Question() {
                   console.log(vlueBaru);
                   if (vlueBaru == answer) {
                     setRequest(true);
+                    setCount(count + 1)
+                    console.log(count)
+                    if(count == 5){
+                      console.log("selesai!!")
+                    }
                     jsConfetti.addConfetti();
                     swal({
                       title: "benar",
@@ -57,6 +60,11 @@ function Question() {
                     });
                   } else {
                     setRequest(true);
+                    setCount(count + 1)
+                    console.log(count)
+                    if(count === 5){
+                      console.log("selesai!!")
+                    }
                     swal({
                       title: "salah kocak",
                       text: "coba lagi!!",
@@ -65,7 +73,7 @@ function Question() {
                   }
                 }}
                 id="tanya"
-                className="text-2xl py-12 sm:text-lg sm:py-4 sm:w-8/12 w-full h-auto tanya rounded-xl hover:bg-orange-300"
+                className="xl:text-2xl xl:py-12 sm:text-lg sm:py-4 sm:w-8/12 xl:w-full xl:h-auto tanya rounded-xl hover:bg-orange-300"
               >
                 {options}
               </button>
