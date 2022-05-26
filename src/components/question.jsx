@@ -10,7 +10,7 @@ function Question() {
   const jsConfetti = new JSConfetti();
   const [is5, setIs5] = useState(false);
   const quiz = newQuestion("capital-to-country", 3);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [benar, setBenar] = useState(0);
   console.log(count);
   useEffect(() => {
@@ -24,7 +24,11 @@ function Question() {
     setAnswer(quiz.answer);
     setOption(quiz.options);
   }, [request]);
-
+  function tryAgain() {
+    setCount(1);
+    setIs5(false);
+    setBenar(0);
+  }
   return (
     <div className=" flex  flex-col text-center item-center  justify-center">
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
@@ -34,12 +38,13 @@ function Question() {
               Results
             </h1>
             <div className="flex justify-center justify-items-center  ">
-              <p className="mt-2 mx-2">
-                You got 
-              </p>
-                <p className="text-xl md:text-4xl  popmed  text-green-400">{benar}</p> <p className="mt-2 mx-2">correct answers</p>
-            </div>  
-            
+              <p className="mt-2 mx-2">You got</p>
+              <p className="text-xl md:text-4xl  popmed  text-green-400">
+                {benar}
+              </p>{" "}
+              <p className="mt-2 mx-2">correct answers</p>
+            </div>
+            <button onClick={tryAgain}>try again</button>
           </>
         ) : (
           <>
@@ -60,8 +65,8 @@ function Question() {
                       if (vlueBaru == answer) {
                         setRequest(true);
                         setBenar(benar + 1);
-                        console.log(count);
                         setCount(count + 1);
+                        console.log(count);
                         jsConfetti.addConfetti();
                         vlueBaruu.style.backgroundColor = "green";
                         // swal({
@@ -81,13 +86,16 @@ function Question() {
                         //   icon: "error",
                         // });
                         setCount(count + 1);
-                        if (count == 5) {
-                          swal("selesai!!");
-                          setIs5(true);
-                        }
+                        console.log(count);
+                        // if (count == 5) {
+                        //   swal("selesai!!");
+                        //   setIs5(true);
+                        // }
                         setTimeout(() => {
                           vlueBaruu.style.backgroundColor = "white";
                         }, 500);
+                      } if(count == 5){
+                        setIs5(true)
                       }
                     }}
                     id="tanya"
