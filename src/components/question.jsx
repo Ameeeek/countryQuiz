@@ -1,7 +1,6 @@
 import { newQuestion } from "country-quiz";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import JSConfetti from "js-confetti";
-import swal from "sweetalert";
 function Question() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -67,38 +66,21 @@ function Question() {
                       let vlueBaru = e.target.value;
                       let vlueBaruu = e.target;
                       console.log(vlueBaruu);
-                      let jawab = document.getElementById("tanya");
                       console.log(vlueBaru);
                       if (vlueBaru == answer) {
                         setRequest(true);
                         setBenar(benar + 1);
                         setCount(count + 1);
-                        console.log(count);
                         jsConfetti.addConfetti();
                         vlueBaruu.style.backgroundColor = "rgb(34 197 94)";
-                        console.log(vlueBaruu)
-                        // swal({
-                        //   title: "benar",
-                        //   text: "jawaban mu benar!!",
-                        //   icon: "success",
-                        // });
                         setTimeout(() => {
                           vlueBaruu.style.backgroundColor = "white";
                         }, 3000);
                       } else {
                         setRequest(true);
                         vlueBaruu.style.backgroundColor = "red";
-                        // swal({
-                        //   title: "salah kocak",
-                        //   text: "coba lagi!!",
-                        //   icon: "error",
-                        // });
                         setCount(count + 1);
                         console.log(count);
-                        // if (count == 5) {
-                        //   swal("selesai!!");
-                        //   setIs5(true);
-                        // }
                         setTimeout(() => {
                           vlueBaruu.style.backgroundColor = "white";
                         }, 500);
