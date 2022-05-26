@@ -34,17 +34,24 @@ function Question() {
       <div className="answer rounded-xl p-8 popBold z-20 flex bg-white flex-col item-center justify-centers text-center">
         {is5 ? (
           <>
-            <h1 className="biru text-center pb-4 md:pb-8 md:text-center text-lg md:text-4xl">
-              Results
-            </h1>
-            <div className="flex justify-center justify-items-center  ">
-              <p className="mt-2 mx-2">You got</p>
-              <p className="text-xl md:text-4xl  popmed  text-green-400">
-                {benar}
-              </p>{" "}
-              <p className="mt-2 mx-2">correct answers</p>
+            <div>
+              <h1 className="biru text-center pb-4 md:pb-8 md:text-center text-lg md:text-4xl">
+                Results
+              </h1>
+              <div className="flex justify-center  ">
+                <p className="mt-2 mx-2">You got</p>
+                <p className="text-xl md:text-4xl  popmed  text-green-400">
+                  {benar}
+                </p>{" "}
+                <p className="mt-2 mx-2">correct answers</p>
+              </div>
+              <button
+                onClick={tryAgain}
+                className="p-2 mt-8 rounded-xl md:rounded-xl border-2 border-amber-500 h-full w-52 popBold "
+              >
+                try again
+              </button>
             </div>
-            <button onClick={tryAgain}>try again</button>
           </>
         ) : (
           <>
@@ -68,7 +75,8 @@ function Question() {
                         setCount(count + 1);
                         console.log(count);
                         jsConfetti.addConfetti();
-                        vlueBaruu.style.backgroundColor = "green";
+                        vlueBaruu.style.backgroundColor = "rgb(34 197 94)";
+                        console.log(vlueBaruu)
                         // swal({
                         //   title: "benar",
                         //   text: "jawaban mu benar!!",
@@ -76,7 +84,7 @@ function Question() {
                         // });
                         setTimeout(() => {
                           vlueBaruu.style.backgroundColor = "white";
-                        }, 500);
+                        }, 3000);
                       } else {
                         setRequest(true);
                         vlueBaruu.style.backgroundColor = "red";
@@ -94,8 +102,9 @@ function Question() {
                         setTimeout(() => {
                           vlueBaruu.style.backgroundColor = "white";
                         }, 500);
-                      } if(count == 5){
-                        setIs5(true)
+                      }
+                      if (count == 5) {
+                        setIs5(true);
                       }
                     }}
                     id="tanya"
